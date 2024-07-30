@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="270"
+   height="180"
+   viewBox="0 0 270 180"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <g
+       id="g16"
+       transform="translate(5.5)">
+      <rect
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.45854;stroke-linecap:round;stroke-linejoin:round"
+         id="rect4"
+         width="150"
+         height="10"
+         x="54.5"
+         y="85" />
+      <g
+         id="g13-4"
+         transform="matrix(-1,0,0,1,245.5,0)">
+        <g
+           id="g14"
+           transform="translate(-7)">
+          <g
+             id="g15">
+            <path
+               d="M 37,30 V 150 H 47 V 140 40 30 Z"
+               style="fill-rule:evenodd;stroke-width:0.36827;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-0" />
+            <path
+               d="m 26,48 v 84 h 10 v -7 -70 -7 z"
+               style="fill-rule:evenodd;stroke-width:0.308116;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-4-7" />
+            <path
+               d="m 15,56.4 v 67.2 H 25 V 118 62 56.4 Z"
+               style="fill-rule:evenodd;stroke-width:0.275587;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-4-4-9" />
+            <path
+               d="M 4,85 V 95 H 14 V 94.166667 85.833333 85 Z"
+               style="fill-rule:evenodd;stroke-width:0.10631;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-4-4-3-4" />
+            <path
+               d="M 47,30 V 40 H 59 V 30 Z"
+               style="fill-rule:evenodd;stroke-width:0.538748;stroke-linecap:round;stroke-linejoin:round"
+               id="path11-4" />
+            <path
+               d="m 47,140 v 10 h 12 v -10 z"
+               style="fill-rule:evenodd;stroke-width:0.538748;stroke-linecap:round;stroke-linejoin:round"
+               id="path12-3" />
+          </g>
+        </g>
+      </g>
+      <g
+         id="g13-4-7"
+         transform="translate(13.5)">
+        <g
+           id="g14-8"
+           transform="translate(-7)">
+          <g
+             id="g15-4">
+            <path
+               d="M 37,30 V 150 H 47 V 140 40 30 Z"
+               style="fill-rule:evenodd;stroke-width:0.36827;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-0-7" />
+            <path
+               d="m 26,48 v 84 h 10 v -7 -70 -7 z"
+               style="fill-rule:evenodd;stroke-width:0.308116;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-4-7-3" />
+            <path
+               d="m 15,56.4 v 67.2 H 25 V 118 62 56.4 Z"
+               style="fill-rule:evenodd;stroke-width:0.275587;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-4-4-9-2" />
+            <path
+               d="M 4,85 V 95 H 14 V 94.166667 85.833333 85 Z"
+               style="fill-rule:evenodd;stroke-width:0.10631;stroke-linecap:round;stroke-linejoin:round"
+               id="path13-4-4-3-4-6" />
+            <path
+               d="M 47,30 V 40 H 59 V 30 Z"
+               style="fill-rule:evenodd;stroke-width:0.538748;stroke-linecap:round;stroke-linejoin:round"
+               id="path11-4-4" />
+            <path
+               d="m 47,140 v 10 h 12 v -10 z"
+               style="fill-rule:evenodd;stroke-width:0.538748;stroke-linecap:round;stroke-linejoin:round"
+               id="path12-3-8" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

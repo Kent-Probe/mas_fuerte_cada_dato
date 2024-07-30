@@ -1,12 +1,16 @@
+import { Route, Routes } from "react-router-dom"
 import Dashboard from "./dasboard/dashboard"
 import Menu from "./ui/components/menu"
 
 function App() {
    return (
-      <main className="w-full h-screen grid grid-cols-2">
-         <Menu />
-         <Dashboard />
-      </main>
+      <Routes>
+         <Route path="/" element={<Menu />}>
+            <Route path="" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/login" element={<Dashboard />} />
+         </Route>
+      </Routes>
    )
 }
 
