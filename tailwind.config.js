@@ -8,6 +8,7 @@ export default {
             highlighted: "#87FF00",
             secondary: {
                100: "#FFFFFF",
+               150: "#F6F6F6",
                200: "#A7A7A7",
                300: "#646364",
                400: "#2D3237",

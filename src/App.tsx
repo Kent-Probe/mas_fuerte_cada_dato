@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom"
-import Dashboard from "./dasboard/dashboard"
+import { navItems } from "./lib/constants/navItems"
 import Menu from "./ui/components/menu"
 
 function App() {
    return (
       <Routes>
          <Route path="/" element={<Menu />}>
-            <Route path="" element={<Dashboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/login" element={<Dashboard />} />
+            {navItems.map((item, index) => (
+               <Route key={index} path={item.to} element={item.element} />
+            ))}
          </Route>
       </Routes>
    )
