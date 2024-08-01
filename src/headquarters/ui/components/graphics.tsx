@@ -1,6 +1,17 @@
 import * as echarts from "echarts"
 import { EChartsOption } from "echarts"
 import ReactECharts from "echarts-for-react"
+import React from "react"
+import {
+   PolarAngleAxis,
+   PolarGrid,
+   PolarRadiusAxis,
+   Radar,
+   RadarChart,
+   ResponsiveContainer,
+   Tooltip,
+} from "recharts"
+import { sedes } from "../../../lib/data/sedes"
 
 function GraphicsGlobals() {
    return (
@@ -11,6 +22,7 @@ function GraphicsGlobals() {
          <div className="flex flex-col gap-3 w-11/12">
             <GraphicHeadquartersExpenses />
             <GraphicHeadquartersIncome />
+            <GraficoCapacidadRadar />
          </div>
       </section>
    )
@@ -317,6 +329,36 @@ function GraphicHeadquartersIncome() {
          style={{ height: "500px" }}
          option={option}
       />
+   )
+}
+
+const GraficoCapacidadRadar: React.FC = () => {
+   return (
+      <div className="bg-secondary-150 rounded-lg h-[500px] p-10">
+         <h2>Capacidad Actual y Máxima por Sede</h2>
+         <ResponsiveContainer width="100%" height={400}>
+            <RadarChart data={sedes} outerRadius={150}>
+               <PolarGrid />
+               <PolarAngleAxis dataKey="nombre_sede" />
+               <PolarRadiusAxis angle={30} domain={[0, 130]} />
+               <Radar
+                  name="Capacidad Actual"
+                  dataKey="capacidad_actual"
+                  stroke="#1f77b4"
+                  fill="#a6cee3"
+                  fillOpacity={0.8}
+               />
+               <Radar
+                  name="Capacidad Máxima"
+                  dataKey="capacidad_maxima"
+                  stroke="#ff7f0e"
+                  fill="#ffbb78"
+                  fillOpacity={0.2}
+               />
+               <Tooltip />
+            </RadarChart>
+         </ResponsiveContainer>
+      </div>
    )
 }
 
