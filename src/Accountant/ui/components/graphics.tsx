@@ -21,7 +21,6 @@ function GraphicSankey() {
          right: "right",
          subtext: "Example",
       },
-
       toolbox: {
          orient: "vertical",
          show: true,
@@ -42,9 +41,6 @@ function GraphicSankey() {
       series: {
          type: "sankey",
          layout: "none",
-         emphasis: {
-            focus: "adjacency",
-         },
          data: [
             {
                name: "Products",

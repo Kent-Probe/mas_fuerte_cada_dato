@@ -1,0 +1,257 @@
+const client = [
+   {
+      id_serial: "001",
+      id_usuario: 1000,
+      tipo_cliente: {
+         id_serial: "003",
+         nombre: "Nuevo",
+         descripcion: "Cliente que se acaba de registrar",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "002",
+      id_usuario: 1001,
+      tipo_cliente: {
+         id_serial: "002",
+         nombre: "Recuperado",
+         descripcion: "Cliente que regresa después de un tiempo",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "003",
+      id_usuario: 1002,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "004",
+      id_usuario: 1003,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "005",
+      id_usuario: 1004,
+      tipo_cliente: {
+         id_serial: "002",
+         nombre: "Recuperado",
+         descripcion: "Cliente que regresa después de un tiempo",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "006",
+      id_usuario: 1005,
+      tipo_cliente: {
+         id_serial: "003",
+         nombre: "Nuevo",
+         descripcion: "Cliente que se acaba de registrar",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "007",
+      id_usuario: 1006,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "008",
+      id_usuario: 1007,
+      tipo_cliente: {
+         id_serial: "002",
+         nombre: "Recuperado",
+         descripcion: "Cliente que regresa después de un tiempo",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "009",
+      id_usuario: 1008,
+      tipo_cliente: {
+         id_serial: "003",
+         nombre: "Nuevo",
+         descripcion: "Cliente que se acaba de registrar",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "010",
+      id_usuario: 1009,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "011",
+      id_usuario: 1010,
+      tipo_cliente: {
+         id_serial: "002",
+         nombre: "Recuperado",
+         descripcion: "Cliente que regresa después de un tiempo",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "012",
+      id_usuario: 1011,
+      tipo_cliente: {
+         id_serial: "003",
+         nombre: "Nuevo",
+         descripcion: "Cliente que se acaba de registrar",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "013",
+      id_usuario: 1012,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "004",
+      id_usuario: 1003,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "005",
+      id_usuario: 1004,
+      tipo_cliente: {
+         id_serial: "002",
+         nombre: "Recuperado",
+         descripcion: "Cliente que regresa después de un tiempo",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "006",
+      id_usuario: 1005,
+      tipo_cliente: {
+         id_serial: "003",
+         nombre: "Nuevo",
+         descripcion: "Cliente que se acaba de registrar",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "007",
+      id_usuario: 1006,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "008",
+      id_usuario: 1007,
+      tipo_cliente: {
+         id_serial: "002",
+         nombre: "Recuperado",
+         descripcion: "Cliente que regresa después de un tiempo",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "009",
+      id_usuario: 1008,
+      tipo_cliente: {
+         id_serial: "003",
+         nombre: "Nuevo",
+         descripcion: "Cliente que se acaba de registrar",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "010",
+      id_usuario: 1009,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "011",
+      id_usuario: 1010,
+      tipo_cliente: {
+         id_serial: "002",
+         nombre: "Recuperado",
+         descripcion: "Cliente que regresa después de un tiempo",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "012",
+      id_usuario: 1011,
+      tipo_cliente: {
+         id_serial: "003",
+         nombre: "Nuevo",
+         descripcion: "Cliente que se acaba de registrar",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+   {
+      id_serial: "013",
+      id_usuario: 1012,
+      tipo_cliente: {
+         id_serial: "001",
+         nombre: "Renovado",
+         descripcion: "Cliente que asiste regularmente",
+      },
+      fecha_ingreso: "2024-01-01",
+      estado: true,
+   },
+]
+
+export { client }

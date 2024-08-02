@@ -22,5 +22,6 @@ module.exports = {
          RULE.WARN,
          { allowConstantExport: true },
       ],
+      "react-hooks/exhaustive-deps": RULE.OFF,
    },
 }

@@ -12,6 +12,7 @@ import {
    Tooltip,
 } from "recharts"
 import { sedes } from "../../../lib/data/sedes"
+import { formatNumber } from "../../../lib/utils/formattear"
 
 function GraphicsGlobals() {
    return (
@@ -20,13 +21,18 @@ function GraphicsGlobals() {
             <h1 className="text-4xl font-extrabold">Estadisticas</h1>
          </div>
          <div className="flex flex-col gap-3 w-11/12">
+            <div className="w-gull flex flex-row justify-between">
+               <GraphicVelocity />
+               <GraficoCapacidadRadar />
+            </div>
             <GraphicHeadquartersExpenses />
             <GraphicHeadquartersIncome />
-            <GraficoCapacidadRadar />
          </div>
       </section>
    )
 }
+
+// function Graphic
 
 function GraphicHeadquartersExpenses() {
    const option: EChartsOption = {
@@ -332,9 +338,96 @@ function GraphicHeadquartersIncome() {
    )
 }
 
+function GraphicVelocity() {
+   const option: EChartsOption = {
+      title: {
+         text: "Objetivo anual de ventas",
+         left: "center",
+         top: "0",
+      },
+      series: [
+         {
+            type: "gauge",
+            center: ["50%", "60%"],
+            startAngle: 200,
+            endAngle: -20,
+            min: 0,
+            max: 260000000000,
+            splitNumber: 2,
+            itemStyle: {
+               color: "#EC6C17",
+            },
+            progress: {
+               show: true,
+               width: 30,
+            },
+            pointer: {
+               show: true,
+            },
+            axisLine: {
+               lineStyle: {
+                  width: 30,
+               },
+            },
+            axisTick: {
+               distance: -45,
+               splitNumber: 5,
+               lineStyle: {
+                  width: 2,
+                  color: "#999",
+               },
+            },
+            splitLine: {
+               distance: -52,
+               length: 14,
+               lineStyle: {
+                  width: 3,
+                  color: "#999",
+               },
+            },
+            axisLabel: {
+               distance: -20,
+
+               color: "#999",
+               fontSize: 20,
+               formatter: function (value) {
+                  return formatNumber(value)
+               },
+            },
+            anchor: {
+               show: false,
+            },
+            detail: {
+               valueAnimation: true,
+               width: "60%",
+               lineHeight: 40,
+               borderRadius: 8,
+               offsetCenter: [0, "140px"],
+               fontSize: 35,
+               fontWeight: "bolder",
+               formatter: function (value) {
+                  return formatNumber(value)
+               },
+               color: "inherit",
+            },
+            data: [
+               {
+                  value: 200000000000,
+               },
+            ],
+         },
+      ],
+   }
+   return (
+      <div className="w-[calc(50%-0.25rem)] bg-secondary-150 rounded-lg h-[500px] p-10">
+         <ReactECharts className="!h-full" option={option} />
+      </div>
+   )
+}
+
 const GraficoCapacidadRadar: React.FC = () => {
    return (
-      <div className="bg-secondary-150 rounded-lg h-[500px] p-10">
+      <div className="w-[calc(50%-0.25rem)] bg-secondary-150 rounded-lg h-[500px] p-10">
          <h2>Capacidad Actual y Máxima por Sede</h2>
          <ResponsiveContainer width="100%" height={400}>
             <RadarChart data={sedes} outerRadius={150}>

@@ -17,9 +17,13 @@ import {
    XAxis,
    YAxis,
 } from "recharts"
+import { typeClient } from "../../../lib/constants/clientes"
+import { COLORS_GRAPHICS } from "../../../lib/constants/colors"
+import { client } from "../../../lib/data/clients"
 import { ingresos } from "../../../lib/data/ingresos"
 import { presupuestos, CantidadSedes as sedes } from "../../../lib/data/sedes"
 import { servicios } from "../../../lib/data/services"
+import { LocalDataPros } from "../../../lib/types/props"
 import { calcularPromedioVentasPorMes } from "../../../lib/utils/average"
 import { calcularEstadisticas, clasificarFecha } from "../../../lib/utils/date"
 import { generarVentas } from "../../../lib/utils/generate"
@@ -27,17 +31,37 @@ import { generarVentas } from "../../../lib/utils/generate"
 export default function Graphics() {
    return (
       <section className="w-full">
-         <div className="mt-10 mb-10">
+         <div className="mt-10 mb-10 flex flex-row justify-between">
             <h1 className="text-4xl font-extrabold">Estadisticas</h1>
+            <h1>Filtros</h1>
          </div>
-         <div className="flex flex-row flex-wrap gap-3">
-            <GraficaEfectoCalendario />
+         <LabelsDatas />
+         <div className="flex flex-row flex-wrap gap-3 justify-between">
             <GraphicBarSalesByPlans />
+            <GraficaEfectoCalendario />
             <GraphicPieTypeClient />
             <GraficoMixServicios />
             <GraficoPromedioVentas className="!w-full" />
          </div>
       </section>
+   )
+}
+
+function LabelsDatas() {
+   const gastos = 130000
+   const ingresos = 150000
+   const rentabildiad = gastos / ingresos
+   return (
+      <div className="my-5 flex flex-row flex-wrap justify-between">
+         <LabelData title="Gastos" value={gastos} style="currency" />
+         <LabelData title="Ingresos" value={ingresos} style="currency" />
+         <LabelData
+            title="Rentabilidad"
+            value={rentabildiad}
+            style="percent"
+            classNameText="text-info-400"
+         />
+      </div>
    )
 }
 
@@ -61,20 +85,34 @@ function Graphic({
    )
 }
 
-function GraficoMixServicios() {
-   const COLORS = [
-      "#0088FE",
-      "#00C49F",
-      "#FFBB28",
-      "#FF8042",
-      "#FF69B4",
-      "#7B68EE",
-      "#6B8E23",
-      "#D2691E",
-      "#A52A2A",
-      "#20B2AA",
-   ]
+function LabelData({
+   title,
+   value,
+   style,
+   classNameText,
+   classNameTitle,
+}: LocalDataPros) {
+   return (
+      <Graphic className="!w-[500px] !min-h-[150px] relative overflow-hidden select-none">
+         <h2
+            className={`text-2xl text-secondary-500 font-bold mb-4 ${classNameTitle}`}
+         >
+            {title}
+         </h2>
+         <p className={`text-4xl ${classNameText}`}>
+            ${" "}
+            {value.toLocaleString("Es-es", {
+               currency: "COP",
+               style,
+               maximumFractionDigits: 1,
+            })}
+         </p>
+         <div className="before:content-['_s'] before:absolute before:w-[200px] before:h-[200px] before:rotate-45 before:top-0 before:-right-36 before:bg-highlighted before:blur-xl"></div>
+      </Graphic>
+   )
+}
 
+function GraficoMixServicios() {
    const [sedeSeleccionada, setSedeSeleccionada] = useState(
       presupuestos[0].id_sede,
    )
@@ -116,16 +154,28 @@ function GraficoMixServicios() {
                   cy="50%"
                   outerRadius={80}
                   fill="#8884d8"
-                  label
+                  labelLine={false}
+                  label={({ name }) => name}
                >
                   {dataPie.map((entry, index) => (
                      <Cell
+                        cursor={"pointer"}
                         key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
+                        fill={COLORS_GRAPHICS[index % COLORS_GRAPHICS.length]}
                      />
                   ))}
                </Pie>
-               <Tooltip />
+               <Tooltip
+                  label={"name"}
+                  formatter={(value, name) => [
+                     value.toLocaleString("es-ES", {
+                        currency: "COP",
+                        style: "currency",
+                        maximumFractionDigits: 0,
+                     }),
+                     name,
+                  ]}
+               />
                <Legend align="right" className="" />
             </PieChart>
          </ResponsiveContainer>
@@ -140,7 +190,10 @@ const GraficaEfectoCalendario = () => {
    }))
    return (
       <Graphic>
-         <ResponsiveContainer width="100%" height={400}>
+         <h3 className="text-center text-secondary-500 text-xl font-bold">
+            Gráfico de barras
+         </h3>
+         <ResponsiveContainer width="100%" height={300}>
             <BarChart
                data={calcularEstadisticas(ingresosClasificados)}
                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
@@ -148,7 +201,13 @@ const GraficaEfectoCalendario = () => {
                <CartesianGrid strokeDasharray="3 3" />
                <XAxis dataKey="tipoDia" />
                <YAxis />
-               <Tooltip />
+               <Tooltip
+                  formatter={(value) => {
+                     return value.toLocaleString("es-ES", {
+                        maximumFractionDigits: 1,
+                     })
+                  }}
+               />
                <Legend />
                <Bar dataKey="promedio" fill="#8884d8" name="Promedio" />
                <Bar dataKey="maximo" fill="#82ca9d" name="Máximo" />
@@ -160,6 +219,34 @@ const GraficaEfectoCalendario = () => {
 }
 
 function GraphicPieTypeClient() {
+   let newType = 0
+   let renovados = 0
+   let recuperados = 0
+   const data = []
+   for (const key of client) {
+      if (
+         key.tipo_cliente.nombre.toLowerCase() === typeClient.NEW.toLowerCase()
+      ) {
+         newType++
+      }
+      if (
+         key.tipo_cliente.nombre.toLowerCase() ===
+         typeClient.RENOVATED.toLowerCase()
+      ) {
+         renovados++
+      }
+      if (
+         key.tipo_cliente.nombre.toLowerCase() ===
+         typeClient.RECOVERED.toLowerCase()
+      ) {
+         recuperados++
+      }
+   }
+   data.push(
+      { value: newType, name: "Nuevos" },
+      { value: renovados, name: "Renovados" },
+      { value: recuperados, name: "Recuperados" },
+   )
    const option: EChartsOption = {
       title: {
          text: "Tipos de clientes",
@@ -168,6 +255,13 @@ function GraphicPieTypeClient() {
       },
       tooltip: {
          trigger: "item",
+         valueFormatter(value) {
+            return `${value?.toLocaleString("es-ES", {
+               currency: "COP",
+               style: "currency",
+               maximumFractionDigits: 0,
+            })}`
+         },
       },
       legend: {
          orient: "vertical",
@@ -179,11 +273,7 @@ function GraphicPieTypeClient() {
             name: "Tipos de clientes",
             type: "pie",
             radius: "50%",
-            data: [
-               { value: 2000, name: "Nuevos" },
-               { value: 735, name: "Renovados" },
-               { value: 580, name: "Recuperados" },
-            ],
+            data,
             emphasis: {
                itemStyle: {
                   shadowBlur: 10,
@@ -203,6 +293,11 @@ function GraphicPieTypeClient() {
 
 function GraphicBarSalesByPlans() {
    const option: EChartsOption = {
+      title: {
+         text: "Ventas por Plan",
+         subtext: "bodytech",
+         left: "center",
+      },
       xAxis: {
          type: "category",
          data: ["Platino", "Oro", "Plata", "Bronce", "Básico", "Premiun"],
@@ -245,7 +340,7 @@ const GraficoPromedioVentas: React.FC = ({
 
    return (
       <Graphic className={className}>
-         <h2 className="mb-2 text-secondary-500 font-bold text-lg">
+         <h2 className="mb-2 text-center text-secondary-500 font-bold text-lg">
             Promedio de Ventas por Mes
          </h2>
          <div>
