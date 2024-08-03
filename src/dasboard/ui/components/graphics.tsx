@@ -59,7 +59,7 @@ function LabelsDatas() {
             title="Rentabilidad"
             value={rentabildiad}
             style="percent"
-            classNameText="text-info-400"
+            classNameText="text-success-400"
          />
       </div>
    )
@@ -107,7 +107,7 @@ function LabelData({
                maximumFractionDigits: 1,
             })}
          </p>
-         <div className="before:content-['_s'] before:absolute before:w-[200px] before:h-[200px] before:rotate-45 before:top-0 before:-right-36 before:bg-highlighted before:blur-xl"></div>
+         <div className="before:content-['_'] before:absolute before:w-[200px] before:h-[200px] before:rotate-45 before:top-0 before:-right-44 before:bg-primary before:blur-xl"></div>
       </Graphic>
    )
 }
@@ -153,7 +153,7 @@ function GraficoMixServicios() {
                   cx="50%"
                   cy="50%"
                   outerRadius={80}
-                  fill="#8884d8"
+                  fill={COLORS_GRAPHICS[0]}
                   labelLine={false}
                   label={({ name }) => name}
                >
@@ -209,9 +209,13 @@ const GraficaEfectoCalendario = () => {
                   }}
                />
                <Legend />
-               <Bar dataKey="promedio" fill="#8884d8" name="Promedio" />
-               <Bar dataKey="maximo" fill="#82ca9d" name="Máximo" />
-               <Bar dataKey="minimo" fill="#ffc658" name="Mínimo" />
+               <Bar
+                  dataKey="promedio"
+                  fill={COLORS_GRAPHICS[0]}
+                  name="Promedio"
+               />
+               <Bar dataKey="maximo" fill={COLORS_GRAPHICS[1]} name="Máximo" />
+               <Bar dataKey="minimo" fill={COLORS_GRAPHICS[2]} name="Mínimo" />
             </BarChart>
          </ResponsiveContainer>
       </Graphic>
@@ -274,6 +278,16 @@ function GraphicPieTypeClient() {
             type: "pie",
             radius: "50%",
             data,
+            itemStyle: {
+               color: function (params) {
+                  if (params.data.name === "Nuevos")
+                     return COLORS_GRAPHICS[0 % COLORS_GRAPHICS.length]
+                  else if (params.data.name === "Renovados")
+                     return COLORS_GRAPHICS[1 % COLORS_GRAPHICS.length]
+                  else if (params.data.name === "Recuperados")
+                     return COLORS_GRAPHICS[2 % COLORS_GRAPHICS.length]
+               },
+            },
             emphasis: {
                itemStyle: {
                   shadowBlur: 10,
@@ -309,6 +323,7 @@ function GraphicBarSalesByPlans() {
          {
             data: [50, 100, 150, 80, 70, 110],
             type: "bar",
+            color: "#EC6C17",
          },
       ],
    }
@@ -405,8 +420,8 @@ const GraficoPromedioVentas: React.FC = ({
                <Area
                   type="monotone"
                   dataKey="promedio"
-                  stroke="#8884d8"
-                  fill="#8884d8"
+                  stroke="#EC6C17"
+                  fill="#EC6C17"
                />
             </AreaChart>
          </ResponsiveContainer>

@@ -1,12 +1,15 @@
-import { MouseEventHandler } from "react"
+import { MouseEventHandler, MutableRefObject } from "react"
 
 export default function MessageIcon({
    toggle,
+   ref,
 }: {
    toggle: MouseEventHandler<HTMLButtonElement>
+   ref: MutableRefObject<null>
 }) {
    return (
       <button
+         ref={ref}
          className="fixed grid place-content-center outline-none border-none select-none cursor-pointer bottom-[20px] right-[30px] w-[70px] h-[70px] rounded-[50%] bg-secondary-400 z-50"
          onClick={toggle}
       >
@@ -42,8 +45,8 @@ export default function MessageIcon({
                   y2="47.2031"
                   gradientUnits="userSpaceOnUse"
                >
-                  <stop stopColor="#1BC9FA" />
-                  <stop offset="1" stopColor="#1778F0" />
+                  <stop stopColor="#EC6C17" />
+                  <stop offset="1" stopColor="#fe5d00" />
                </linearGradient>
                <linearGradient
                   id="paint1_linear_3_445"
@@ -53,8 +56,8 @@ export default function MessageIcon({
                   y2="47.2031"
                   gradientUnits="userSpaceOnUse"
                >
-                  <stop stopColor="#1BC9FA" />
-                  <stop offset="1" stopColor="#1778F0" />
+                  <stop stopColor="#EC6C17" />
+                  <stop offset="1" stopColor="#fe5d00" />
                </linearGradient>
                <linearGradient
                   id="paint2_linear_3_445"
@@ -64,8 +67,8 @@ export default function MessageIcon({
                   y2="47.2031"
                   gradientUnits="userSpaceOnUse"
                >
-                  <stop stopColor="#1BC9FA" />
-                  <stop offset="1" stopColor="#1778F0" />
+                  <stop stopColor="#EC6C17" />
+                  <stop offset="1" stopColor="#fe5d00" />
                </linearGradient>
                <linearGradient
                   id="paint3_linear_3_445"
@@ -75,8 +78,8 @@ export default function MessageIcon({
                   y2="47.2031"
                   gradientUnits="userSpaceOnUse"
                >
-                  <stop stopColor="#1BC9FA" />
-                  <stop offset="1" stopColor="#1778F0" />
+                  <stop stopColor="#EC6C17" />
+                  <stop offset="1" stopColor="#fe5d00" />
                </linearGradient>
             </defs>
          </svg>

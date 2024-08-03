@@ -437,15 +437,15 @@ const GraficoCapacidadRadar: React.FC = () => {
                <Radar
                   name="Capacidad Actual"
                   dataKey="capacidad_actual"
-                  stroke="#1f77b4"
-                  fill="#a6cee3"
+                  stroke="#EC6C17"
+                  fill="#EC6C17"
                   fillOpacity={0.8}
                />
                <Radar
                   name="Capacidad Máxima"
                   dataKey="capacidad_maxima"
-                  stroke="#ff7f0e"
-                  fill="#ffbb78"
+                  stroke="#212529"
+                  fill="#2D3237"
                   fillOpacity={0.2}
                />
                <Tooltip />

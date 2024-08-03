@@ -2,6 +2,7 @@ import { motion, useCycle } from "framer-motion"
 import { KeyboardEvent, useEffect, useRef, useState } from "react"
 import { Outlet } from "react-router-dom"
 import { useDimensions } from "../../hooks/useDimensions"
+import useOnClickOutside from "../../hooks/useOnClickOutside"
 import MessageIcon from "../icon/message"
 import NavMenu from "./navMenu"
 
@@ -26,6 +27,7 @@ const openChat = {
 
 export default function Menu() {
    const [isOpen, toggleOpen] = useCycle(false, true)
+   const refButtonOpen = useRef(null)
    const containerRef = useRef(null)
    const chatContainerRef = useRef(null)
    const { height } = useDimensions(containerRef)
@@ -40,6 +42,14 @@ export default function Menu() {
             chatContainerRef.current.scrollHeight
       }
    }, [chat])
+
+   useOnClickOutside(containerRef, () => toggleOpenChat, chatContainerRef)
+
+   const toggleOpenChat = () => {
+      if (!isOpen) {
+         toggleOpen()
+      }
+   }
 
    const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
       if (event.shiftKey && event.key === "Enter") {
@@ -83,9 +93,7 @@ export default function Menu() {
                            key={index}
                            className={`w-full flex flex-col mb-5 ${i.user === "bot" ? "items-start justify-start" : "items-end justify-end"}`}
                         >
-                           <h2 className="text-highlighted text-lg">
-                              {i.user}
-                           </h2>
+                           <h2 className="text-primary text-lg">{i.user}</h2>
                            <p className="bg-secondary-500 p-5 rounded-md min-w-24 max-w-80 text-white break-words whitespace-pre-wrap">
                               {i.message}
                            </p>
@@ -96,14 +104,14 @@ export default function Menu() {
                      <textarea
                         onKeyDown={handleKeyDown}
                         type="text"
-                        className="w-full h-full border-highlighted border-2 outline-highlighted bg-secondary-400 text-white rounded-xl p-2 resize-none"
+                        className="w-full h-full border-primary border-2 outline-primary bg-secondary-400 text-white rounded-xl p-2 resize-none"
                         placeholder="Escribe un mensaje"
                      ></textarea>
                   </div>
                </motion.div>
             </motion.div>
          </motion.div>
-         <MessageIcon toggle={() => toggleOpen()} />
+         <MessageIcon ref={refButtonOpen} toggle={() => toggleOpen()} />
       </main>
    )
 }
