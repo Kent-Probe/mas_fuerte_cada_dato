@@ -49,7 +49,7 @@ function GraphicHeadquartersExpenses() {
                treePath.push(treePathInfo[i].name)
             }
             return [
-               '<div class="tooltip-title">' +
+               '<div className="tooltip-title">' +
                   echarts.format.encodeHTML(treePath.join("/")) +
                   "</div>",
                "Gasto: $" + echarts.format.addCommas(value) + " COP",
@@ -199,7 +199,7 @@ function GraphicHeadquartersIncome() {
                treePath.push(treePathInfo[i].name)
             }
             return [
-               '<div class="tooltip-title">' +
+               '<div className="tooltip-title">' +
                   echarts.format.encodeHTML(treePath.join("/")) +
                   "</div>",
                "Ingreso: $" + echarts.format.addCommas(value) + " COP",

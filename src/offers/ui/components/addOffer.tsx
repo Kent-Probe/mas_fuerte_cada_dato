@@ -84,13 +84,13 @@ function Button({
    svg: ReactNode
 }) {
    return (
-      <div class="flex-initial pl-3">
+      <div className="flex-initial pl-3">
          <button
             type="button"
-            class={`flex items-center px-5 py-2.5 font-medium tracking-wide capitalize rounded-md focus:outline-none transition duration-300 transform active:scale-95 ease-in-out ${className}`}
+            className={`flex items-center px-5 py-2.5 font-medium tracking-wide capitalize rounded-md focus:outline-none transition duration-300 transform active:scale-95 ease-in-out ${className}`}
          >
             {svg}
-            <span class="pl-2 mx-1">{text}</span>
+            <span className="pl-2 mx-1">{text}</span>
          </button>
       </div>
    )
@@ -143,7 +143,7 @@ function AddOfferForm() {
                isTextBottom={false}
                className="w-full px-3 mb-6 md:mb-0"
             />
-            <div class="flex flex-row-reverse p-3">
+            <div className="flex flex-row-reverse p-3">
                <Button
                   text="Guardar"
                   className="hover:bg-[#ba5026] bg-primary focus:bg-primary text-white"

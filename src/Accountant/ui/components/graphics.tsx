@@ -17,9 +17,9 @@ export default function Graphics() {
 function GraphicSankey() {
    const option: EChartsOption = {
       title: {
-         text: "Sankey Diagram",
+         text: "Diagrama de BodyTech",
          right: "right",
-         subtext: "Example",
+         subtext: "Informacion contable",
       },
       toolbox: {
          orient: "vertical",
