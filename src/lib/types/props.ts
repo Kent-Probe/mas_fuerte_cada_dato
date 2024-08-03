@@ -6,5 +6,14 @@ type LocalDataPros = {
    classNameText?: string
 }
 
-export type { LocalDataPros }
+type FieldProps = {
+   linkLabel: string
+   label: string
+   placeholder: string
+   isTextBottom: boolean
+   textBottom: string
+   className: string
+   type: string
+}
 
+export type { FieldProps, LocalDataPros }
